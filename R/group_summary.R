@@ -1,3 +1,13 @@
+#' group_summary
+#'
+#' @param folder_path
+#' @param csv
+#' @param r_object
+#'
+#' @return
+#' @export
+#'
+#' @examples
 group_summary <- function(folder_path, csv = FALSE, r_object = TRUE) {
 
   # take file path and extract file names within the folder

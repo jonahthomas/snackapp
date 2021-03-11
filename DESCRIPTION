@@ -1,15 +1,16 @@
 Package: snackapp
-Title: What the Package Does (One Line, Title Case)
+Title: A package to analyse the usage data from the Snacktivity SnackApp
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Jonah",
+           family = "Thomas",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+           email = "j.j.c.thomas@lboro.ac.uk",
+           comment = c(ORCID = "0000-0002-9886-0169"))
+Description: The SnackApp Package has been designed to provide a convenient set of functions to analyse the output data from the
+Snacktivity SnackApp. It has been designed primarily to allow easier sharing of code amongst the Snacktivity team. The code has
+also been made available to enhance the repeatability of the analysis conducted. 
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -17,3 +18,8 @@ RoxygenNote: 7.1.1
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Imports: 
+    dplyr,
+    magrittr,
+    lubridate,
+    stringr

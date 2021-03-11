@@ -1,3 +1,13 @@
+#' participant_summary
+#'
+#' @param folder_path
+#' @param csv
+#' @param r_object
+#'
+#' @return
+#' @export
+#'
+#' @examples
 participant_summary <- function(folder_path, csv = FALSE, r_object = TRUE) {
   folder_path %>%
     list.files() %>%
