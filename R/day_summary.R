@@ -117,6 +117,6 @@ day_summary <- function(folder_path = file.path(getwd(), "data"), csv = FALSE, r
     write.csv(summary, file = file.path(output_path, "/", "day_summary.csv"))
   }
   if (r_object == TRUE) {
-    assign(paste(file_id, "day_summary", sep = "_"), summary, envir = globalenv())
+    assign("day_summary", summary, envir = globalenv())
   }
 }
