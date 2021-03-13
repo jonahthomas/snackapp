@@ -113,6 +113,6 @@ participant_summary <- function(folder_path = file.path(getwd(), "data"), csv = 
     utils::write.csv(summary, file = file.path(output_path, "/", "summary.csv"))
   }
   if (r_object == TRUE) {
-    assign("summary", summary, envir = globalenv())
+    assign("participant_summary", summary, envir = globalenv())
   }
 }
