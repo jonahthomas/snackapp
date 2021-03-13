@@ -1,15 +1,18 @@
-#' snackapp_summary
+#' day_summary
 #'
-#' @param folder_path
-#' @param csv
-#' @param r_object
-#' @param output_path
+#' @param folder_path A path to the folder which contains the SnackApp usage data. The file should only contain csv files.
+#' Defaults to a folder in the current work directory named "data".
+#' @param csv A logical variable that decides whether a csv output file is created.
+#' @param r_object A logical variable that decides whether an R object is produced and saved in the global environment.
+#' @param output_path A path to a folder where the csv summary file(s) will be written. Defaults to a folder in the current
+#' work directory named "summary".
 #'
-#' @return
+#' @return A dataframe that summarises the SnackApp usage data for each day a participant used the device.
 #' @export
 #'
 #' @examples
-snackapp_summary <- function(folder_path = file.path(getwd(), "data"), csv = FALSE, r_object = TRUE, output_path = file.path(getwd(), "summary")) {
+
+day_summary <- function(folder_path = file.path(getwd(), "data"), csv = FALSE, r_object = TRUE, output_path = file.path(getwd(), "summary")) {
 
   # take file path and extract file names within the folder
 
@@ -45,7 +48,7 @@ snackapp_summary <- function(folder_path = file.path(getwd(), "data"), csv = FAL
       diff = as.duration(date - lag(date))
     ) %>%
     filter(Metric == "background") %>%
-    group_by(id) %>%
+    group_by(id, year, month, day) %>%
     summarise(
       total_time = sum(diff),
       average_time = mean(diff, na.rm = TRUE),
@@ -74,7 +77,7 @@ snackapp_summary <- function(folder_path = file.path(getwd(), "data"), csv = FAL
   # summarise the usage of difference data for each individual app element
 
   data %>%
-    group_by(id) %>%
+    group_by(id, year, month, day) %>%
     summarise(
       total_stat = sum(stat_diff, na.rm = TRUE),
       total_resource = sum(resource_diff, na.rm = TRUE),
@@ -102,14 +105,18 @@ snackapp_summary <- function(folder_path = file.path(getwd(), "data"), csv = FAL
   # bind dataframes from state change and summary using inner join
 
   summary <- inner_join(state_change_summary, summary, keep = FALSE) %>%
-    round(digits = 2)
+    round(digits = 2) %>%
+    mutate(
+      date = make_date(year, month, day)
+    ) %>%
+    relocate(id, date, year, month, day)
 
   # write the total summary data back to a csv
 
   if (csv == TRUE) {
-    write.csv(summary, file = paste(output_path, "/", "participant_summary.csv", sep = ""))
+    write.csv(summary, file = file.path(output_path, "/", "day_summary.csv"))
   }
   if (r_object == TRUE) {
-    snackapp_analytics <<- summary
+    assign(paste(file_id, "day_summary", sep = "_"), summary, envir = globalenv())
   }
 }

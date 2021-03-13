@@ -22,4 +22,5 @@ Imports:
     dplyr,
     magrittr,
     lubridate,
-    stringr
+    stringr,
+    purrr

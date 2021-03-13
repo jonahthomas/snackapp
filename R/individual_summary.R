@@ -1,16 +1,18 @@
-#' Title
+#' individual_summary
 #'
-#' @param folder_path
-#' @param csv
-#' @param r_object
-#' @param output_path
+#' @param folder_path A path to the folder which contains the SnackApp usage data. The file should only contain csv files.
+#' Defaults to a folder in the current work directory named "data".
+#' @param csv A logical variable that decides whether a csv output file is created.
+#' @param r_object A logical variable that decides whether an R object is produced and saved in the global environment.
+#' @param output_path A path to a folder where the csv summary file(s) will be written. Defaults to a folder in the current
+#' work directory named "summary".
 #'
-#' @return
+#' @return A dataframe is generated to summarise each participants usage data.
 #' @export
 #'
 #' @examples
 
-snack_app_individual <- function(folder_path = file.path(getwd(), "data"), csv = FALSE, r_object = TRUE, output_path = file.path(getwd(), "summary")) {
+individual_summary <- function(folder_path = file.path(getwd(), "data"), csv = FALSE, r_object = TRUE, output_path = file.path(getwd(), "summary")) {
   folder_path %>%
     list.files() %>%
     .[str_detect(., "csv")] -> file_names
@@ -105,7 +107,11 @@ snack_app_individual <- function(folder_path = file.path(getwd(), "data"), csv =
 
       # write the total summary data back to a csv
 
-      write.csv(summary, file = paste(output_path, "/", file_id, "-summary.csv", sep = ""))
-      assign(paste(file_id, "summary", sep = "_"), summary, envir = globalenv())
+      if (csv == TRUE) {
+        write.csv(summary, file = file.path(output_path, "/", "individual_summary.csv"))
+      }
+      if (r_object == TRUE) {
+        assign(paste(file_id, "individual_summary", sep = "_"), summary, envir = globalenv())
+      }
     })
 }
