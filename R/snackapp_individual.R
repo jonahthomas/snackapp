@@ -10,7 +10,7 @@
 #'
 #' @examples
 
-snack_app_individual <- function(folder_path, csv = FALSE, r_object = TRUE, output_path = getwd()) {
+snack_app_individual <- function(folder_path = file.path(getwd(), "data"), csv = FALSE, r_object = TRUE, output_path = file.path(getwd(), "summary")) {
   folder_path %>%
     list.files() %>%
     .[str_detect(., "csv")] -> file_names
