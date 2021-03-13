@@ -1,14 +1,15 @@
-#' group_summary
+#' snackapp_day_summary
 #'
 #' @param folder_path
 #' @param csv
 #' @param r_object
+#' @param output_path
 #'
 #' @return
 #' @export
 #'
 #' @examples
-group_summary <- function(folder_path, csv = FALSE, r_object = TRUE) {
+snackapp_day_summary <- function(folder_path, csv = FALSE, r_object = TRUE, output_path = getwd()) {
 
   # take file path and extract file names within the folder
 
@@ -110,7 +111,7 @@ group_summary <- function(folder_path, csv = FALSE, r_object = TRUE) {
   # write the total summary data back to a csv
 
   if (csv == TRUE) {
-    write.csv(summary, file = "summary.csv")
+    write.csv(summary, file = paste(output_path, "/", "summary.csv", sep = ""))
   }
   if (r_object == TRUE) {
     snackapp_analytics <<- summary

@@ -1,14 +1,16 @@
-#' participant_summary
+#' Title
 #'
 #' @param folder_path
 #' @param csv
 #' @param r_object
+#' @param output_path
 #'
 #' @return
 #' @export
 #'
 #' @examples
-participant_summary <- function(folder_path, csv = FALSE, r_object = TRUE) {
+
+snack_app_individual <- function(folder_path, csv = FALSE, r_object = TRUE, output_path = getwd()) {
   folder_path %>%
     list.files() %>%
     .[str_detect(., "csv")] -> file_names
@@ -103,7 +105,7 @@ participant_summary <- function(folder_path, csv = FALSE, r_object = TRUE) {
 
       # write the total summary data back to a csv
 
-      write.csv(summary, file = paste0(file_id, "-summary.csv"))
+      write.csv(summary, file = paste(output_path, "/", file_id, "-summary.csv", sep = ""))
       assign(paste(file_id, "summary", sep = "_"), summary, envir = globalenv())
     })
 }

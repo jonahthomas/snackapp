@@ -8,8 +8,8 @@ Authors@R:
            email = "j.j.c.thomas@lboro.ac.uk",
            comment = c(ORCID = "0000-0002-9886-0169"))
 Description: The SnackApp Package has been designed to provide a convenient set of functions to analyse the output data from the
-Snacktivity SnackApp. It has been designed primarily to allow easier sharing of code amongst the Snacktivity team. The code has
-also been made available to enhance the repeatability of the analysis conducted. 
+    Snacktivity SnackApp. It has been designed primarily to allow easier sharing of code amongst the Snacktivity team. The code has
+    also been made available to enhance the repeatability of the analysis conducted. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
