@@ -1,12 +1,3 @@
-```{r, echo = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  message = FALSE,
-  fig.path = "README-"
-)
-```
-
 # snackapp: Analysing SnackApp data in R
 
 License: [MIT](https://github.com/jonahthomas/snackapp/blob/master/LICENSE.md)
@@ -21,4 +12,6 @@ This package can be installted from GitHub with [devtools](https://github.com/ha
 library(devtools)
 install_github("jonahthomas/snackapp")
 ```
+
+This package is still in development. Additional features are still being developed and will be added in time. The documentation for this package is still being developed and will continue to be improved over time. 
 
