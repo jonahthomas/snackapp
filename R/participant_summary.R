@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-
+#'
 participant_summary <- function(folder_path = file.path(getwd(), "data"), csv = FALSE, r_object = TRUE, output_path = file.path(getwd(), "summary")) {
 
   # take file path and extract file names within the folder
