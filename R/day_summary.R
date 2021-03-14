@@ -13,7 +13,7 @@
 #' @export
 #'
 #' @examples
-#' summary <- snackapp::day_summary(csv = TRUE)
+#'
 day_summary <- function(folder_path = file.path(getwd(), "data"), csv = FALSE, output_path = file.path(getwd(), "summary")) {
 
   # take file path and extract file names within the folder
