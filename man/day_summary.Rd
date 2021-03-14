@@ -7,7 +7,6 @@
 day_summary(
   folder_path = file.path(getwd(), "data"),
   csv = FALSE,
-  r_object = TRUE,
   output_path = file.path(getwd(), "summary")
 )
 }
@@ -17,8 +16,6 @@ Defaults to a folder in the current work directory named "data".}
 
 \item{csv}{A logical variable that decides whether a csv output file is created.}
 
-\item{r_object}{A logical variable that decides whether an R object is produced and saved in the global environment.}
-
 \item{output_path}{A path to a folder where the csv summary file(s) will be written. Defaults to a folder in the current
 work directory named "summary".}
 }
@@ -27,4 +24,7 @@ A dataframe that summarises the SnackApp usage data for each day a participant u
 }
 \description{
 day_summary
+}
+\examples{
+
 }
