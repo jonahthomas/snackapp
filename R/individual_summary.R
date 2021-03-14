@@ -3,7 +3,6 @@
 #' @param folder_path A path to the folder which contains the SnackApp usage data. The file should only contain csv files.
 #' Defaults to a folder in the current work directory named "data".
 #' @param csv A logical variable that decides whether a csv output file is created.
-#' @param r_object A logical variable that decides whether an R object is produced and saved in the global environment.
 #' @param output_path A path to a folder where the csv summary file(s) will be written. Defaults to a folder in the current
 #' work directory named "summary".
 #'
@@ -12,7 +11,7 @@
 #'
 #' @examples
 #'
-individual_summary <- function(folder_path = file.path(getwd(), "data"), csv = FALSE, r_object = TRUE, output_path = file.path(getwd(), "summary")) {
+individual_summary <- function(folder_path = file.path(getwd(), "data"), csv = FALSE, output_path = file.path(getwd(), "summary")) {
 
   # take file path and extract file names within the folder
 
@@ -27,17 +26,17 @@ individual_summary <- function(folder_path = file.path(getwd(), "data"), csv = F
       utils::read.csv(file.path(folder_path, file_names), stringsAsFactors = FALSE) %>%
         dplyr::mutate(
           id = as.numeric(substr(file_names, 20, 21)), # use file name as a unique id column for each dataframe
-          date = as.POSIXct(Date), # convert date from chr to POSIXct format
+          date = as.POSIXct(`Date`), # convert date from chr to POSIXct format
           year = as.numeric(format(date, "%Y")),
           month = as.numeric(format(date, "%m")), # create month and day column
           day = as.numeric(format(date, "%d"))
         ) %>%
         dplyr::relocate(id, date, month, day) %>%
-        dplyr::select(-Date) -> data
+        dplyr::select(-`Date`) -> data
 
       data <- as.data.frame(data)
 
-      file_id <- data$id[1]
+      file_id <- substr(file_names, 20, 21)
 
       data %>%
         dplyr::filter(Event == "app-state-changed") %>%
@@ -111,10 +110,8 @@ individual_summary <- function(folder_path = file.path(getwd(), "data"), csv = F
       # write the total summary data back to a csv
 
       if (csv == TRUE) {
-        utils::write.csv(summary, file = file.path(output_path, "/", "individual_summary.csv"))
+        utils::write.csv(summary, file = file.path(output_path, paste(file_id, "_summary.csv", sep = "")))
       }
-      if (r_object == TRUE) {
-        assign(paste(file_id, "individual_summary", sep = "_"), summary, envir = globalenv())
-      }
+      return(summary)
     })
 }
