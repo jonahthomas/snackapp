@@ -1,5 +1,8 @@
 #' participant_summary
 #'
+#' Summarises participants usage over all days they are part of the intervention. A tibble is generated with one row per
+#' participant.
+#'
 #' @param folder_path A path to the folder which contains the SnackApp usage data. The file should only contain csv files.
 #' Defaults to a folder in the current work directory named "data".
 #' @param csv A logical variable that decides whether a csv output file is created.

@@ -1,5 +1,8 @@
 #' individual_summary
 #'
+#' Creating a separate dataframe for each participant for which data has been collected. A list of tibbles are generated while
+#' separate .csv files can be produced.
+#'
 #' @param folder_path A path to the folder which contains the SnackApp usage data. The file should only contain csv files.
 #' Defaults to a folder in the current work directory named "data".
 #' @param csv A logical variable that decides whether a csv output file is created.

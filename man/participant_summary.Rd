@@ -23,7 +23,8 @@ work directory named "summary".}
 A dataframe that summarises the SnackApp usage data. The summary is generated with one row per participant.
 }
 \description{
-participant_summary
+Summarises participants usage over all days they are part of the intervention. A tibble is generated with one row per
+participant.
 }
 \examples{
 

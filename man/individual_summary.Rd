@@ -23,7 +23,8 @@ work directory named "summary".}
 A dataframe is generated to summarise each participants usage data.
 }
 \description{
-individual_summary
+Creating a separate dataframe for each participant for which data has been collected. A list of tibbles are generated while
+separate .csv files can be produced.
 }
 \examples{
 
