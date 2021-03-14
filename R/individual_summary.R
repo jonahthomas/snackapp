@@ -13,7 +13,7 @@
 #' @export
 #'
 #' @examples
-#'
+#'summary <- snackapp::individual_summary(csv = TRUE)
 individual_summary <- function(folder_path = file.path(getwd(), "data"), csv = FALSE, output_path = file.path(getwd(), "summary")) {
 
   # take file path and extract file names within the folder

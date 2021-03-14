@@ -27,5 +27,5 @@ Creating a separate dataframe for each participant for which data has been colle
 separate .csv files can be produced.
 }
 \examples{
-
+summary <- snackapp::individual_summary(csv = TRUE)
 }

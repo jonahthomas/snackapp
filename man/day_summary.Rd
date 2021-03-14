@@ -27,5 +27,6 @@ Summarising the usage data for a participant on each day they used the intervent
 generated.
 }
 \examples{
+summary <- snackapp::day_summary(csv = TRUE)
 
 }

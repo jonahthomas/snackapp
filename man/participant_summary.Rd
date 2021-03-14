@@ -27,5 +27,5 @@ Summarises participants usage over all days they are part of the intervention. A
 participant.
 }
 \examples{
-
+summary <- snackapp::participant_summary(csv = TRUE)
 }
