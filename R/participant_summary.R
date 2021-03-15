@@ -109,11 +109,11 @@ participant_summary <- function(folder_path = file.path(getwd(), "data"), csv = 
   summary <- dplyr::inner_join(state_change_summary, summary, keep = FALSE) %>%
     round(digits = 2)
 
-  return(summary)
-
   # write the total summary data back to a csv
 
   if (csv == TRUE) {
     utils::write.csv(summary, file = file.path(output_path, "summary.csv"))
   }
+
+  return(summary)
 }
