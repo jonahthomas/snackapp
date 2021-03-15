@@ -118,6 +118,6 @@ day_summary <- function(folder_path = file.path(getwd(), "data"), csv = FALSE, o
   # write the total summary data back to a csv
 
   if (csv == TRUE) {
-    utils::write.csv(summary, file = file.path(output_path, "/", "day_summary.csv"))
+    utils::write.csv(summary, file = file.path(output_path, "day_summary.csv"))
   }
 }

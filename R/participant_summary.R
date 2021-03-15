@@ -114,6 +114,6 @@ participant_summary <- function(folder_path = file.path(getwd(), "data"), csv = 
   # write the total summary data back to a csv
 
   if (csv == TRUE) {
-    utils::write.csv(summary, file = file.path(output_path, "/", "summary.csv"))
+    utils::write.csv(summary, file = file.path(output_path, "summary.csv"))
   }
 }
