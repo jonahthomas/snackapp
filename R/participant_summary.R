@@ -65,6 +65,8 @@ participant_summary <- function(data, csv = FALSE, output_path = file.path(getwd
       notifications = dplyr::if_else(stringr::str_detect(.data$Event, "notification"), 1, 0)
     )
 
+  data[, 11:17][data[, 11:17] == 0] <- NA
+
   # summarise the usage of difference data for each individual app element
 
   data %>%
@@ -95,10 +97,10 @@ participant_summary <- function(data, csv = FALSE, output_path = file.path(getwd
 
   # bind dataframes from state change and summary using inner join
 
-  summary <- dplyr::inner_join(state_change_summary, summary) %>%
-    dplyr::mutate(
-      dplyr::across(where(is.numeric), round)
-    )
+  summary <- dplyr::inner_join(state_change_summary, summary)
+
+  summary <- data.frame(lapply(summary,
+                               function(x) if(is.numeric(x)) round(x, 2) else x))
 
   # write the total summary data back to a csv
 

@@ -67,6 +67,8 @@ individual_summary <- function(data, csv = FALSE, output_path = file.path(getwd(
       notifications = dplyr::if_else(stringr::str_detect(.data$Event, "notification"), 1, 0)
     )
 
+  data[, 11:17][data[, 11:17] == 0] <- NA
+
   # summarise the usage of difference data for each individual app element
 
   data %>%
@@ -101,10 +103,10 @@ individual_summary <- function(data, csv = FALSE, output_path = file.path(getwd(
     dplyr::mutate(
       date = lubridate::make_date(.data$year, .data$month, .data$day)
     ) %>%
-    dplyr::relocate(.data$id, .data$date, .data$year, .data$month, .data$day) %>%
-    dplyr::mutate(
-      dplyr::across(where(is.numeric), round)
-    )
+    dplyr::relocate(.data$id, .data$date, .data$year, .data$month, .data$day)
+
+  summary <- data.frame(lapply(summary,
+                               function(x) if(is.numeric(x)) round(x, 2) else x))
 
   summary <- split(summary, f = summary$id)
 
