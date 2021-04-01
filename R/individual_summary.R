@@ -103,7 +103,7 @@ individual_summary <- function(data, csv = FALSE, output_path = file.path(getwd(
     ) %>%
     dplyr::relocate(.data$id, .data$date, .data$year, .data$month, .data$day) %>%
     dplyr::mutate(
-      dplyr::across((is.numeric), round)
+      dplyr::across(where(is.numeric), round)
     )
 
   summary <- split(summary, f = summary$id)

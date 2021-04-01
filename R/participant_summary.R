@@ -97,7 +97,7 @@ participant_summary <- function(data, csv = FALSE, output_path = file.path(getwd
 
   summary <- dplyr::inner_join(state_change_summary, summary) %>%
     dplyr::mutate(
-      dplyr::across((is.numeric), round)
+      dplyr::across(where(is.numeric), round)
     )
 
   # write the total summary data back to a csv
