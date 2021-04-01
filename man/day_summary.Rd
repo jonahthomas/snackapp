@@ -4,15 +4,11 @@
 \alias{day_summary}
 \title{day_summary}
 \usage{
-day_summary(
-  folder_path = file.path(getwd(), "data"),
-  csv = FALSE,
-  output_path = file.path(getwd(), "summary")
-)
+day_summary(data, csv = FALSE, output_path = file.path(getwd(), "summary"))
 }
 \arguments{
-\item{folder_path}{A path to the folder which contains the SnackApp usage data. The file should only contain csv files.
-Defaults to a folder in the current work directory named "data".}
+\item{data}{The SnackApp usage data that is to be analysed. This parameter accepts the output of the load_data function.
+It also accepts a dataframe with 6 columns: id, Date, Event, Metric, Goal Is Automatic Set and Goal Value Set.}
 
 \item{csv}{A logical variable that decides whether a csv output file is created.}
 

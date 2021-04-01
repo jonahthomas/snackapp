@@ -5,14 +5,14 @@
 \title{individual_summary}
 \usage{
 individual_summary(
-  folder_path = file.path(getwd(), "data"),
+  data,
   csv = FALSE,
   output_path = file.path(getwd(), "summary")
 )
 }
 \arguments{
-\item{folder_path}{A path to the folder which contains the SnackApp usage data. The file should only contain csv files.
-Defaults to a folder in the current work directory named "data".}
+\item{data}{The SnackApp usage data that is to be analysed. This parameter accepts the output of the load_data function.
+It also accepts a dataframe with 6 columns: id, Date, Event, Metric, Goal Is Automatic Set and Goal Value Set.}
 
 \item{csv}{A logical variable that decides whether a csv output file is created.}
 
@@ -24,5 +24,5 @@ A dataframe is generated to summarise each participants usage data.
 }
 \description{
 Creating a separate dataframe for each participant for which data has been collected. A list of tibbles are generated while
-separate .csv files can be produced.
+separate .csv files can be produced and written to file.
 }
