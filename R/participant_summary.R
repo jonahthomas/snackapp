@@ -78,7 +78,7 @@ participant_summary <- function(data, csv = FALSE, output_path = file.path(getwd
       average_stat = mean(.data$stat_diff, na.rm = TRUE),
       average_resource = mean(.data$resource_diff, na.rm = TRUE),
       average_goal = mean(.data$goal_diff, na.rm = TRUE),
-      stdev_goal = stats::sd(.data$stat_diff, na.rm = TRUE),
+      stdev_stat = stats::sd(.data$stat_diff, na.rm = TRUE),
       stdev_resources = stats::sd(.data$resource_diff, na.rm = TRUE),
       stdev_goal = stats::sd(.data$goal_diff, na.rm = TRUE),
       min_stat = min(.data$stat_diff[which(.data$stat_diff > 0)]),
