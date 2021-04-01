@@ -26,5 +26,6 @@ Imports:
     lubridate,
     stringr,
     purrr,
-    utf8
+    utf8,
+    rlang
 VignetteBuilder: knitr
