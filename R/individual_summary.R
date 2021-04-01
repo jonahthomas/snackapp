@@ -90,16 +90,16 @@ individual_summary <- function(data, csv = FALSE, output_path = file.path(getwd(
       max_resource = max(.data$resource_diff, na.rm = TRUE),
       max_goal = max(.data$goal_diff, na.rm = TRUE),
       notificaition_count = sum(.data$notifications)
-    ) -> summary
+    ) -> user_summary
 
   # due to minimum not including zero, coerces inf so convert these back to zeros
 
-  is.na(summary) <- sapply(summary, is.infinite)
-  summary[is.na(summary)] <- 0
+  is.na(user_summary) <- sapply(user_summary, is.infinite)
+  user_summary[is.na(user_summary)] <- 0
 
   # bind dataframes from state change and summary using inner join
 
-  summary <- dplyr::inner_join(state_change_summary, summary) %>%
+  summary <- dplyr::inner_join(state_change_summary, user_summary) %>%
     dplyr::mutate(
       date = lubridate::make_date(.data$year, .data$month, .data$day)
     ) %>%
