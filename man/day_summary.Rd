@@ -26,6 +26,3 @@ A dataframe that summarises the SnackApp usage data for each day a participant u
 Summarising the usage data for a participant on each day they used the intervention. A single tibble is
 generated.
 }
-\examples{
-
-}
