@@ -103,7 +103,7 @@ individual_summary <- function(data, csv = FALSE, output_path = file.path(getwd(
     ) %>%
     dplyr::relocate(.data$id, .data$date, .data$year, .data$month, .data$day) %>%
     dplyr::mutate(
-      dplyr::across(where(is.numeric), round)
+      dplyr::across((is.numeric), round)
     )
 
   summary <- split(summary, f = summary$id)
@@ -113,7 +113,7 @@ individual_summary <- function(data, csv = FALSE, output_path = file.path(getwd(
   if (csv == TRUE) {
 
     for (i in seq_along(summary)) {
-      write.csv(summary[[i]], file.path(output_path, paste0(summary[[i]]$id[1], "_summary.csv")))
+      utils::write.csv(summary[[i]], file.path(output_path, paste0(summary[[i]]$id[1], "_summary.csv")))
     }
   }
 
