@@ -3,6 +3,7 @@
 export("%>%")
 export(day_summary)
 export(individual_summary)
+export(load_data)
 export(participant_summary)
 importFrom(magrittr,"%>%")
 importFrom(rlang,.data)
