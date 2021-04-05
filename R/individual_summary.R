@@ -21,6 +21,30 @@ individual_summary <- function(data, csv = FALSE, output_path = file.path(getwd(
       dplyr::bind_rows(.id = "id")
   }
 
+  # NEW CODE! Check that imported data has correct column names!
+
+  if(!"id" %in% colnames(data)){
+    stop("Column names of imported data are not compatable with this function.")
+  }
+  if(!"Date" %in% colnames(data)){
+    stop("Column names of imported data are not compatable with this function.")
+  }
+  if(!"Event" %in% colnames(data)){
+    stop("Column names of imported data are not compatable with this function.")
+  }
+  if(!"Metric" %in% colnames(data)){
+    stop("Column names of imported data are not compatable with this function.")
+  }
+  if(!"Goal.Is.Automatic.Set" %in% colnames(data)){
+    stop("Column names of imported data are not compatable with this function.")
+  }
+  if(!"Goal.Value.Set" %in% colnames(data)){
+    stop("Column names of imported data are not compatable with this function.")
+  }
+  if(ncol(data) != 6){
+    stop("Incorrect number of columns. Please ensure all csv files only have 5 columns.")
+  }
+
   file_id <- unique(data$id)
 
   data <- data %>%
