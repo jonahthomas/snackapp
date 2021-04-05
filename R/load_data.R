@@ -10,6 +10,6 @@ load_data <- function(folder_path = file.path(getwd(), "data")) {
   folder_path %>%
     list.files(pattern = "*.csv") -> file_names
   file.path(folder_path, file_names) %>%
-    purrr::map(utils::read.csv) %>%
+    purrr::map(vroom::vroom) %>%
     stats::setNames(substr(file_names, 20, 21))
 }
