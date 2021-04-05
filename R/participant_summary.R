@@ -80,7 +80,7 @@ participant_summary <- function(data, csv = FALSE, output_path = file.path(getwd
       my_stat = dplyr::if_else(stringr::str_detect(.data$Metric, "my-stat"), 1, 0),
       my_stat = dplyr::lag(.data$my_stat, 1),
       stat_diff = dplyr::if_else(.data$my_stat == 1, as.numeric(.data$date - .data$lag_date), 0),
-      resources = dplyr::if_else(stringr::str_detect(.data$Metric, "resources") | stringr::str_detect(.data$Metric, "your-health") | stringr::str_detect(.data$Metric, "faq") | stringr::str_detect(.data$Metric, "forum") & !stringr::str_detect(.data$Metric, "fitbit"), 1, 0),
+      resources = dplyr::if_else(stringr::str_detect(.data$Metric, "resources"), 1, 0),
       resources = dplyr::lag(.data$resources, 1),
       resource_diff = dplyr::if_else(.data$resources == 1, as.numeric(.data$date - .data$lag_date), 0),
       my_goals = dplyr::if_else(stringr::str_detect(.data$Metric, "my-goal"), 1, 0),
