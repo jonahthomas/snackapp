@@ -27,5 +27,6 @@ Imports:
     stringr,
     purrr,
     utf8,
-    rlang
+    rlang,
+    vroom
 VignetteBuilder: knitr
